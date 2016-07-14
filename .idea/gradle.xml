@@ -8,14 +8,18 @@
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$" />
-            <option value="$PROJECT_DIR$/View_EditTextView" />
+            <option value="$PROJECT_DIR$/Demo_ButterKnife" />
+            <option value="$PROJECT_DIR$/Demo_Utils" />
+            <option value="$PROJECT_DIR$/View_EditTextDel" />
             <option value="$PROJECT_DIR$/app" />
           </set>
         </option>
         <option name="myModules">
           <set>
             <option value="$PROJECT_DIR$" />
-            <option value="$PROJECT_DIR$/View_EditTextView" />
+            <option value="$PROJECT_DIR$/Demo_ButterKnife" />
+            <option value="$PROJECT_DIR$/Demo_Utils" />
+            <option value="$PROJECT_DIR$/View_EditTextDel" />
             <option value="$PROJECT_DIR$/app" />
           </set>
         </option>
