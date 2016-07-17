@@ -1,0 +1,10 @@
+CHANGED,/Users/mrxus/Documents/GIT/DemoList/demo_soft_input/build/intermediates/transforms/instantRun/debug/folders/4000/5/enhanced/com/evt/demo_soft_input/R$id$override.class
+CHANGED,/Users/mrxus/Documents/GIT/DemoList/demo_soft_input/build/intermediates/transforms/instantRun/debug/folders/4000/5/enhanced/com/evt/demo_soft_input/R$layout$override.class
+CHANGED,/Users/mrxus/Documents/GIT/DemoList/demo_soft_input/build/intermediates/transforms/instantRun/debug/folders/4000/5/enhanced/android/support/v7/appcompat/R$id$override.class
+CHANGED,/Users/mrxus/Documents/GIT/DemoList/demo_soft_input/build/intermediates/transforms/instantRun/debug/folders/4000/5/enhanced/com/evt/demo_soft_input/R$integer$override.class
+CHANGED,/Users/mrxus/Documents/GIT/DemoList/demo_soft_input/build/intermediates/transforms/instantRun/debug/folders/4000/5/enhanced/com/evt/demo_soft_input/R$styleable$override.class
+CHANGED,/Users/mrxus/Documents/GIT/DemoList/demo_soft_input/build/intermediates/transforms/instantRun/debug/folders/4000/5/enhanced/com/evt/demo_soft_input/R$style$override.class
+CHANGED,/Users/mrxus/Documents/GIT/DemoList/demo_soft_input/build/intermediates/transforms/instantRun/debug/folders/4000/5/enhanced/com/evt/demo_soft_input/SecondActivity$override.class
+CHANGED,/Users/mrxus/Documents/GIT/DemoList/demo_soft_input/build/intermediates/transforms/instantRun/debug/folders/4000/5/enhanced/com/evt/demo_soft_input/R$mipmap$override.class
+CHANGED,/Users/mrxus/Documents/GIT/DemoList/demo_soft_input/build/intermediates/transforms/instantRun/debug/folders/4000/5/enhanced/com/evt/demo_soft_input/R$string$override.class
+CHANGED,/Users/mrxus/Documents/GIT/DemoList/demo_soft_input/build/intermediates/transforms/instantRun/debug/folders/4000/5/enhanced/com/android/tools/fd/runtime/AppPatchesLoaderImpl.class

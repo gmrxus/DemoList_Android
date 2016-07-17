@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<instant-run
+    abi="arm64-v8a,armeabi-v7a,armeabi"
+    api-level="22"
+    density="xxhdpi"
+    format="7"
+    timestamp="20581567572372"
+    token="-1582617281540678749" >
+
+    <task
+        name="javac"
+        duration="147" />
+    <task
+        name="instant-run-dex"
+        duration="0" />
+    <task
+        name="instant-run-transform"
+        duration="61" />
+    <task
+        name="verifier"
+        duration="6" />
+
+    <artifact
+        location="/Users/mrxus/Documents/GIT/DemoList/demo_soft_input/build/outputs/apk/demo_soft_input-debug.apk"
+        type="MAIN" />
+
+    <build timestamp="20581567572372" >
+        <artifact
+            location="/Users/mrxus/Documents/GIT/DemoList/demo_soft_input/build/outputs/apk/demo_soft_input-debug.apk"
+            type="MAIN" />
+    </build>
+
+</instant-run>
