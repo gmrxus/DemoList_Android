@@ -12,7 +12,6 @@
             <option value="$PROJECT_DIR$/Demo_Utils" />
             <option value="$PROJECT_DIR$/View_EditTextDel" />
             <option value="$PROJECT_DIR$/app" />
-            <option value="$PROJECT_DIR$/demo_soft_input" />
           </set>
         </option>
         <option name="myModules">
@@ -22,7 +21,6 @@
             <option value="$PROJECT_DIR$/Demo_Utils" />
             <option value="$PROJECT_DIR$/View_EditTextDel" />
             <option value="$PROJECT_DIR$/app" />
-            <option value="$PROJECT_DIR$/demo_soft_input" />
           </set>
         </option>
       </GradleProjectSettings>
