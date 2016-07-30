@@ -32,6 +32,8 @@ import java.util.EnumSet;
 import java.util.Map;
 import java.util.concurrent.CountDownLatch;
 
+import cn.mrxus.zxing.activity.CaptureActivity;
+
 /**
  * This thread does all the heavy lifting of decoding the images.
  *

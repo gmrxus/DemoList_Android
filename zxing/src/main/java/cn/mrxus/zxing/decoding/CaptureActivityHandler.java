@@ -62,11 +62,11 @@ public final class CaptureActivityHandler extends Handler {
     DONE
   }
 
-  CaptureActivityHandler(CaptureActivity activity,
-                         Collection<BarcodeFormat> decodeFormats,
-                         Map<DecodeHintType,?> baseHints,
-                         String characterSet,
-                         CameraManager cameraManager) {
+  public CaptureActivityHandler(CaptureActivity activity,
+                                Collection<BarcodeFormat> decodeFormats,
+                                Map<DecodeHintType, ?> baseHints,
+                                String characterSet,
+                                CameraManager cameraManager) {
     this.activity = activity;
     decodeThread = new DecodeThread(activity, decodeFormats, baseHints, characterSet,
         new ViewfinderResultPointCallback(activity.getViewfinderView()));
