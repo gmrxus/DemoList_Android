@@ -2,6 +2,8 @@ package cn.mrxus.demo_zxing_2;
 
 import android.content.res.AssetFileDescriptor;
 import android.graphics.Bitmap;
+import android.graphics.Canvas;
+import android.graphics.Paint;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.os.Bundle;
@@ -15,6 +17,7 @@ import android.widget.TextView;
 import com.google.zxing.BarcodeFormat;
 import com.google.zxing.DecodeHintType;
 import com.google.zxing.Result;
+import com.google.zxing.ResultPoint;
 
 import java.io.IOException;
 import java.util.Collection;
@@ -107,8 +110,10 @@ public class CaptureActivity extends FragmentActivity implements SurfaceHolder.C
             surfaceHolder.setType(SurfaceHolder.SURFACE_TYPE_PUSH_BUFFERS);
 
         }
+    }
 
-
+    public CameraManager getCameraManager() {
+        return cameraManager;
     }
 
     private void initBeepSound() {
@@ -136,7 +141,6 @@ public class CaptureActivity extends FragmentActivity implements SurfaceHolder.C
     }
 
 
-
     public ViewfinderView getViewfinderView() {
         return viewfinderView;
     }
@@ -158,6 +162,62 @@ public class CaptureActivity extends FragmentActivity implements SurfaceHolder.C
                 + obj.getText());
     }
 
+//    public void handleDecode(Result rawResult, Bitmap barcode, float scaleFactor) {
+//        inactivityTimer.onActivity();
+//        lastResult = rawResult;
+////    ResultHandler resultHandler = ResultHandlerFactory.makeResultHandler(this, rawResult);
+//
+//        boolean fromLiveScan = barcode != null;
+//        if (fromLiveScan) {
+////      historyManager.addHistoryItem(rawResult, resultHandler);
+//            // Then not from history, so beep/vibrate and we have an image to draw on
+////      beepManager.playBeepSoundAndVibrate();
+//            drawResultPoints(barcode, scaleFactor, rawResult);
+//        }
+//    }
+//
+//    /**
+//     * Superimpose a line for 1D or dots for 2D to highlight the key features of the barcode.
+//     *
+//     * @param barcode   A bitmap of the captured image.
+//     * @param scaleFactor amount by which thumbnail was scaled
+//     * @param rawResult The decoded results which contains the points to draw.
+//     */
+//    private void drawResultPoints(Bitmap barcode, float scaleFactor, Result rawResult) {
+//        ResultPoint[] points = rawResult.getResultPoints();
+//        if (points != null && points.length > 0) {
+//            Canvas canvas = new Canvas(barcode);
+//            Paint paint = new Paint();
+//            paint.setColor(getResources().getColor(R.color.result_points));
+//            if (points.length == 2) {
+//                paint.setStrokeWidth(4.0f);
+//                drawLine(canvas, paint, points[0], points[1], scaleFactor);
+//            } else if (points.length == 4 &&
+//                    (rawResult.getBarcodeFormat() == BarcodeFormat.UPC_A ||
+//                            rawResult.getBarcodeFormat() == BarcodeFormat.EAN_13)) {
+//                // Hacky special case -- draw two lines, for the barcode and metadata
+//                drawLine(canvas, paint, points[0], points[1], scaleFactor);
+//                drawLine(canvas, paint, points[2], points[3], scaleFactor);
+//            } else {
+//                paint.setStrokeWidth(10.0f);
+//                for (ResultPoint point : points) {
+//                    if (point != null) {
+//                        canvas.drawPoint(scaleFactor * point.getX(), scaleFactor * point.getY(), paint);
+//                    }
+//                }
+//            }
+//        }
+//    }
+//
+//    private static void drawLine(Canvas canvas, Paint paint, ResultPoint a, ResultPoint b, float scaleFactor) {
+//        if (a != null && b != null) {
+//            canvas.drawLine(scaleFactor * a.getX(),
+//                    scaleFactor * a.getY(),
+//                    scaleFactor * b.getX(),
+//                    scaleFactor * b.getY(),
+//                    paint);
+//        }
+//    }
 
 
     private static final long VIBRATE_DURATION = 200L;

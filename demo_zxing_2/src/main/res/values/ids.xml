@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="restart_preview" type="id">0xa001</item>
+    <item name="decode_succeeded" type="id">0xa002</item>
+    <item name="decode_failed" type="id">0xa003</item>
+    <item name="decode" type="id">0xa004</item>
+    <item name="return_scan_result" type="id">0xa005</item>
+    <item name="launch_product_query" type="id">0xa006</item>
+    <item name="quit" type="id">0xa007</item>
+</resources>
