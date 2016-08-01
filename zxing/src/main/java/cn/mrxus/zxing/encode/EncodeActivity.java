@@ -21,10 +21,6 @@ import android.view.Display;
 import android.view.MenuInflater;
 import android.view.WindowManager;
 import com.google.zxing.WriterException;
-import com.google.zxing.client.android.Contents;
-import com.google.zxing.client.android.FinishListener;
-import com.google.zxing.client.android.Intents;
-import com.google.zxing.client.android.R;
 
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -44,6 +40,11 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.regex.Pattern;
+
+import cn.mrxus.zxing.R;
+import cn.mrxus.zxing.activity.Contents;
+import cn.mrxus.zxing.decoding.FinishListener;
+import cn.mrxus.zxing.decoding.Intents;
 
 /**
  * This class encodes data from an Intent into a QR code, and then displays it full screen so that
@@ -95,22 +96,22 @@ public final class EncodeActivity extends Activity {
 
   @Override
   public boolean onOptionsItemSelected(MenuItem item) {
-    switch (item.getItemId()) {
-      case R.id.menu_share:
-        share();
-        return true;
-      case R.id.menu_encode:
-        Intent intent = getIntent();
-        if (intent == null) {
-          return false;
-        }
-        intent.putExtra(USE_VCARD_KEY, !qrCodeEncoder.isUseVCard());
-        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-        startActivity(intent);
-        finish();
-        return true;
-      default:
+    int i = item.getItemId();
+    if (i == R.id.menu_share) {
+      share();
+      return true;
+    } else if (i == R.id.menu_encode) {
+      Intent intent = getIntent();
+      if (intent == null) {
         return false;
+      }
+      intent.putExtra(USE_VCARD_KEY, !qrCodeEncoder.isUseVCard());
+      intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+      startActivity(intent);
+      finish();
+      return true;
+    } else {
+      return false;
     }
   }
   

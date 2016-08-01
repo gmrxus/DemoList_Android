@@ -70,6 +70,7 @@ import cn.mrxus.zxing.decoding.FinishListener;
 import cn.mrxus.zxing.decoding.InactivityTimer;
 import cn.mrxus.zxing.decoding.IntentSource;
 import cn.mrxus.zxing.decoding.Intents;
+import cn.mrxus.zxing.utils.ID;
 import cn.mrxus.zxing.view.ViewfinderView;
 
 /**
@@ -117,7 +118,7 @@ public final class CaptureActivity extends Activity implements SurfaceHolder.Cal
 //  private BeepManager beepManager;
   private AmbientLightManager ambientLightManager;
 
-  ViewfinderView getViewfinderView() {
+  public ViewfinderView getViewfinderView() {
     return viewfinderView;
   }
 
@@ -360,59 +361,59 @@ public final class CaptureActivity extends Activity implements SurfaceHolder.Cal
     return super.onCreateOptionsMenu(menu);
   }
 
-  @Override
-  public boolean onOptionsItemSelected(MenuItem item) {
-    Intent intent = new Intent(Intent.ACTION_VIEW);
-    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_WHEN_TASK_RESET);
-    switch (item.getItemId()) {
-      case R.id.menu_share:
-        intent.setClassName(this, ShareActivity.class.getName());
-        startActivity(intent);
-        break;
-      case R.id.menu_history:
-        intent.setClassName(this, HistoryActivity.class.getName());
-        startActivityForResult(intent, HISTORY_REQUEST_CODE);
-        break;
-      case R.id.menu_settings:
-        intent.setClassName(this, PreferencesActivity.class.getName());
-        startActivity(intent);
-        break;
-      case R.id.menu_help:
-        intent.setClassName(this, HelpActivity.class.getName());
-        startActivity(intent);
-        break;
-      default:
-        return super.onOptionsItemSelected(item);
-    }
-    return true;
-  }
+//  @Override
+//  public boolean onOptionsItemSelected(MenuItem item) {
+//    Intent intent = new Intent(Intent.ACTION_VIEW);
+//    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_WHEN_TASK_RESET);
+//    switch (item.getItemId()) {
+//      case R.id.menu_share:
+//        intent.setClassName(this, ShareActivity.class.getName());
+//        startActivity(intent);
+//        break;
+//      case R.id.menu_history:
+//        intent.setClassName(this, HistoryActivity.class.getName());
+//        startActivityForResult(intent, HISTORY_REQUEST_CODE);
+//        break;
+//      case R.id.menu_settings:
+//        intent.setClassName(this, PreferencesActivity.class.getName());
+//        startActivity(intent);
+//        break;
+//      case R.id.menu_help:
+//        intent.setClassName(this, HelpActivity.class.getName());
+//        startActivity(intent);
+//        break;
+//      default:
+//        return super.onOptionsItemSelected(item);
+//    }
+//    return true;
+//  }
 
-  @Override
-  public void onActivityResult(int requestCode, int resultCode, Intent intent) {
-    if (resultCode == RESULT_OK && requestCode == HISTORY_REQUEST_CODE && historyManager != null) {
-      int itemNumber = intent.getIntExtra(Intents.History.ITEM_NUMBER, -1);
-      if (itemNumber >= 0) {
-        HistoryItem historyItem = historyManager.buildHistoryItem(itemNumber);
-        decodeOrStoreSavedBitmap(null, historyItem.getResult());
-      }
-    }
-  }
+//  @Override
+//  public void onActivityResult(int requestCode, int resultCode, Intent intent) {
+//    if (resultCode == RESULT_OK && requestCode == HISTORY_REQUEST_CODE && historyManager != null) {
+//      int itemNumber = intent.getIntExtra(Intents.History.ITEM_NUMBER, -1);
+//      if (itemNumber >= 0) {
+//        HistoryItem historyItem = historyManager.buildHistoryItem(itemNumber);
+//        decodeOrStoreSavedBitmap(null, historyItem.getResult());
+//      }
+//    }
+//  }
 
-  private void decodeOrStoreSavedBitmap(Bitmap bitmap, Result result) {
-    // Bitmap isn't used yet -- will be used soon
-    if (handler == null) {
-      savedResultToShow = result;
-    } else {
-      if (result != null) {
-        savedResultToShow = result;
-      }
-      if (savedResultToShow != null) {
-        Message message = Message.obtain(handler, R.id.decode_succeeded, savedResultToShow);
-        handler.sendMessage(message);
-      }
-      savedResultToShow = null;
-    }
-  }
+//  private void decodeOrStoreSavedBitmap(Bitmap bitmap, Result result) {
+//    // Bitmap isn't used yet -- will be used soon
+//    if (handler == null) {
+//      savedResultToShow = result;
+//    } else {
+//      if (result != null) {
+//        savedResultToShow = result;
+//      }
+//      if (savedResultToShow != null) {
+//        Message message = Message.obtain(handler, R.id.decode_succeeded, savedResultToShow);
+//        handler.sendMessage(message);
+//      }
+//      savedResultToShow = null;
+//    }
+//  }
 
   @Override
   public void surfaceCreated(SurfaceHolder holder) {
@@ -451,7 +452,7 @@ public final class CaptureActivity extends Activity implements SurfaceHolder.Cal
     if (fromLiveScan) {
 //      historyManager.addHistoryItem(rawResult, resultHandler);
       // Then not from history, so beep/vibrate and we have an image to draw on
-      beepManager.playBeepSoundAndVibrate();
+//      beepManager.playBeepSoundAndVibrate();
       drawResultPoints(barcode, scaleFactor, rawResult);
     }
 
@@ -726,7 +727,7 @@ public final class CaptureActivity extends Activity implements SurfaceHolder.Cal
       if (handler == null) {
         handler = new CaptureActivityHandler(this, decodeFormats, decodeHints, characterSet, cameraManager);
       }
-      decodeOrStoreSavedBitmap(null, null);
+//      decodeOrStoreSavedBitmap(null, null);
     } catch (IOException ioe) {
       Log.w(TAG, ioe);
       displayFrameworkBugMessageAndExit();
@@ -750,6 +751,7 @@ public final class CaptureActivity extends Activity implements SurfaceHolder.Cal
   public void restartPreviewAfterDelay(long delayMS) {
     if (handler != null) {
       handler.sendEmptyMessageDelayed(R.id.restart_preview, delayMS);
+//      handler.sendEmptyMessageDelayed(ID.restart_preview, delayMS);
     }
     resetStatusView();
   }

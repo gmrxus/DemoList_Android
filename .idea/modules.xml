@@ -9,6 +9,7 @@
       <module fileurl="file://$PROJECT_DIR$/View_EditTextDel/View_EditTextView.iml" filepath="$PROJECT_DIR$/View_EditTextDel/View_EditTextView.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/demo_zxing/demo_zxing.iml" filepath="$PROJECT_DIR$/demo_zxing/demo_zxing.iml" />
+      <module fileurl="file://$PROJECT_DIR$/demo_zxing_2/demo_zxing_2.iml" filepath="$PROJECT_DIR$/demo_zxing_2/demo_zxing_2.iml" />
       <module fileurl="file://$PROJECT_DIR$/zxing/zxing.iml" filepath="$PROJECT_DIR$/zxing/zxing.iml" />
     </modules>
   </component>

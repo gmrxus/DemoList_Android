@@ -42,7 +42,7 @@ final class AutoFocusManager implements Camera.AutoFocusCallback {
 
   private boolean stopped;
   private boolean focusing;
-  private final boolean useAutoFocus;
+//  private final boolean useAutoFocus;
   private final Camera camera;
   private AsyncTask<?,?,?> outstandingTask;
 
@@ -50,10 +50,10 @@ final class AutoFocusManager implements Camera.AutoFocusCallback {
     this.camera = camera;
     SharedPreferences sharedPrefs = PreferenceManager.getDefaultSharedPreferences(context);
     String currentFocusMode = camera.getParameters().getFocusMode();
-    useAutoFocus =
-        sharedPrefs.getBoolean(PreferencesActivity.KEY_AUTO_FOCUS, true) &&
-        FOCUS_MODES_CALLING_AF.contains(currentFocusMode);
-    Log.i(TAG, "Current focus mode '" + currentFocusMode + "'; use auto focus? " + useAutoFocus);
+//    useAutoFocus =
+//        sharedPrefs.getBoolean(PreferencesActivity.KEY_AUTO_FOCUS, true) &&
+//        FOCUS_MODES_CALLING_AF.contains(currentFocusMode);
+//    Log.i(TAG, "Current focus mode '" + currentFocusMode + "'; use auto focus? " + useAutoFocus);
     start();
   }
 
@@ -76,7 +76,7 @@ final class AutoFocusManager implements Camera.AutoFocusCallback {
   }
 
   synchronized void start() {
-    if (useAutoFocus) {
+//    if (useAutoFocus) {
       outstandingTask = null;
       if (!stopped && !focusing) {
         try {
@@ -90,7 +90,7 @@ final class AutoFocusManager implements Camera.AutoFocusCallback {
         }
       }
     }
-  }
+//  }
 
   private synchronized void cancelOutstandingTask() {
     if (outstandingTask != null) {
@@ -103,7 +103,7 @@ final class AutoFocusManager implements Camera.AutoFocusCallback {
 
   synchronized void stop() {
     stopped = true;
-    if (useAutoFocus) {
+//    if (useAutoFocus) {
       cancelOutstandingTask();
       // Doesn't hurt to call this even if not focusing
       try {
@@ -112,7 +112,7 @@ final class AutoFocusManager implements Camera.AutoFocusCallback {
         // Have heard RuntimeException reported in Android 4.0.x+; continue?
         Log.w(TAG, "Unexpected exception while cancelling focusing", re);
       }
-    }
+//    }
   }
 
   private final class AutoFocusTask extends AsyncTask<Object,Object,Object> {
