@@ -1,9 +1,12 @@
 package cn.mrxus.demo_zxing_2;
 
 import android.content.res.AssetFileDescriptor;
+import android.graphics.Bitmap;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Vibrator;
 import android.support.v4.app.FragmentActivity;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
@@ -11,6 +14,7 @@ import android.widget.TextView;
 
 import com.google.zxing.BarcodeFormat;
 import com.google.zxing.DecodeHintType;
+import com.google.zxing.Result;
 
 import java.io.IOException;
 import java.util.Collection;
@@ -26,7 +30,7 @@ public class CaptureActivity extends FragmentActivity implements SurfaceHolder.C
 
     private ViewfinderView viewfinderView;
     private CameraManager cameraManager;
-    private TextView tv;
+    private TextView txtResult;
     private MediaPlayer mediaPlayer;
     private boolean hasSurface;
     private InactivityTimer inactivityTimer;
@@ -45,7 +49,7 @@ public class CaptureActivity extends FragmentActivity implements SurfaceHolder.C
         hasSurface = false;
         cameraManager = new CameraManager(getApplication());
         viewfinderView = (ViewfinderView) findViewById(R.id.viewfinderView);
-        tv = (TextView) findViewById(R.id.tv);
+        txtResult = (TextView) findViewById(R.id.tv);
         inactivityTimer = new InactivityTimer(this);
 
     }
@@ -60,17 +64,34 @@ public class CaptureActivity extends FragmentActivity implements SurfaceHolder.C
         } else {
             surfaceHolder.addCallback(this);
         }
-        decodeFormats =null;
-        characterSet =null;
+        decodeFormats = null;
+        characterSet = null;
 
-        playBeep =true;
+        playBeep = true;
         AudioManager audioService = (AudioManager) getSystemService(AUDIO_SERVICE);
         if (audioService.getRingerMode() != AudioManager.RINGER_MODE_NORMAL) {
-            playBeep =false;
+            playBeep = false;
         }
         initBeepSound();
-        vibrate =true;
+        vibrate = true;
     }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        if (handler != null) {
+            handler.quitSynchronously();
+            handler = null;
+        }
+        cameraManager.closeDriver();
+    }
+
+    @Override
+    protected void onDestroy() {
+        inactivityTimer.shutdown();
+        super.onDestroy();
+    }
+
 
     private void initCamera(SurfaceHolder surfaceHolder) {
         try {
@@ -114,6 +135,46 @@ public class CaptureActivity extends FragmentActivity implements SurfaceHolder.C
         }
     }
 
+
+
+    public ViewfinderView getViewfinderView() {
+        return viewfinderView;
+    }
+
+    public Handler getHandler() {
+        return handler;
+    }
+
+    public void drawViewfinder() {
+        viewfinderView.drawViewfinder();
+
+    }
+
+    public void handleDecode(Result obj, Bitmap barcode) {
+        inactivityTimer.onActivity();
+        viewfinderView.drawResultBitmap(barcode);
+        playBeepSoundAndVibrate();
+        txtResult.setText(obj.getBarcodeFormat().toString() + ":"
+                + obj.getText());
+    }
+
+
+
+    private static final long VIBRATE_DURATION = 200L;
+
+    private void playBeepSoundAndVibrate() {
+        if (playBeep && mediaPlayer != null) {
+            mediaPlayer.start();
+        }
+        if (vibrate) {
+            Vibrator vibrator = (Vibrator) getSystemService(VIBRATOR_SERVICE);
+            vibrator.vibrate(VIBRATE_DURATION);
+        }
+    }
+
+    /**
+     * When the beep has finished playing, rewind to queue up another one.
+     */
     private final MediaPlayer.OnCompletionListener beepListener = new MediaPlayer.OnCompletionListener() {
         public void onCompletion(MediaPlayer mediaPlayer) {
             mediaPlayer.seekTo(0);
@@ -124,7 +185,7 @@ public class CaptureActivity extends FragmentActivity implements SurfaceHolder.C
     @Override
     public void surfaceCreated(SurfaceHolder surfaceHolder) {
         if (!hasSurface) {
-            hasSurface =true;
+            hasSurface = true;
             initCamera(surfaceHolder);
         }
     }
@@ -136,7 +197,7 @@ public class CaptureActivity extends FragmentActivity implements SurfaceHolder.C
 
     @Override
     public void surfaceDestroyed(SurfaceHolder surfaceHolder) {
-        hasSurface =false;
+        hasSurface = false;
     }
     //**********************************************
 }
