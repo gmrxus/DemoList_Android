@@ -1,9 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".CaptureActivity">
+
+
+    <SurfaceView
+        android:id="@+id/sv"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    </SurfaceView>
+
+    <cn.mrxus.demo_zxing_2.view.ViewfinderView
+        android:id="@+id/viewfinderView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
 
     <TextView
         android:id="@+id/tv"
@@ -11,21 +24,4 @@
         android:layout_height="wrap_content"
         android:text="Hello World!" />
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_below="@id/tv"
-        android:orientation="vertical">
-
-        <SurfaceView
-            android:id="@+id/sv"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" />
-
-        <cn.mrxus.demo_zxing_2.view.ViewfinderView
-            android:id="@+id/viewfinderView"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" />
-    </LinearLayout>
-
-</RelativeLayout>
+</FrameLayout>
