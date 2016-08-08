@@ -6,7 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
 
-import cn.mrxus.zxing.activity1.CaptureActivity;
+import cn.mrxus.zxing.activity.CaptureActivity;
 
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {

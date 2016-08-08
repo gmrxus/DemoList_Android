@@ -5,23 +5,31 @@
     android:layout_height="match_parent"
     tools:context=".CaptureActivity">
 
-
     <SurfaceView
         android:id="@+id/sv"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:layout_centerInParent="true"></SurfaceView>
 
-    </SurfaceView>
 
     <cn.mrxus.demo_zxing_2.view.ViewfinderView
         android:id="@+id/viewfinderView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"
+        android:layout_centerInParent="true"
+        android:background="@android:color/transparent" />
+
 
     <TextView
-        android:id="@+id/tv"
+        android:id="@+id/tv1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Hello World!" />
+
+    <ImageView
+        android:id="@+id/iv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@mipmap/ic_launcher" />
 
 </FrameLayout>

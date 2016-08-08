@@ -1,9 +1,9 @@
 package cn.mrxus.demo_zxing_2;
 
+import android.content.Intent;
 import android.content.res.AssetFileDescriptor;
 import android.graphics.Bitmap;
-import android.graphics.Canvas;
-import android.graphics.Paint;
+import android.graphics.drawable.BitmapDrawable;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.os.Bundle;
@@ -12,12 +12,12 @@ import android.os.Vibrator;
 import android.support.v4.app.FragmentActivity;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.google.zxing.BarcodeFormat;
 import com.google.zxing.DecodeHintType;
 import com.google.zxing.Result;
-import com.google.zxing.ResultPoint;
 
 import java.io.IOException;
 import java.util.Collection;
@@ -44,6 +44,7 @@ public class CaptureActivity extends FragmentActivity implements SurfaceHolder.C
     private boolean playBeep;
     private static final float BEEP_VOLUME = 0.10f;
     private boolean vibrate;
+    private ImageView iv;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,7 +53,8 @@ public class CaptureActivity extends FragmentActivity implements SurfaceHolder.C
         hasSurface = false;
         cameraManager = new CameraManager(getApplication());
         viewfinderView = (ViewfinderView) findViewById(R.id.viewfinderView);
-        txtResult = (TextView) findViewById(R.id.tv);
+        txtResult = (TextView) findViewById(R.id.tv1);
+        iv = (ImageView)findViewById(R.id.iv);
         inactivityTimer = new InactivityTimer(this);
 
     }
@@ -99,16 +101,13 @@ public class CaptureActivity extends FragmentActivity implements SurfaceHolder.C
     private void initCamera(SurfaceHolder surfaceHolder) {
         try {
             cameraManager.openDriver(surfaceHolder);
-
         } catch (IOException e) {
             e.printStackTrace();
             return;
         }
         if (handler == null) {
-
             handler = new CaptureActivityHandler(this, decodeFormats, decodeHints, characterSet, cameraManager);
             surfaceHolder.setType(SurfaceHolder.SURFACE_TYPE_PUSH_BUFFERS);
-
         }
     }
 
@@ -154,12 +153,20 @@ public class CaptureActivity extends FragmentActivity implements SurfaceHolder.C
 
     }
 
+    //处理结果 obj是结果值,barcode是结果图片
     public void handleDecode(Result obj, Bitmap barcode) {
         inactivityTimer.onActivity();
         viewfinderView.drawResultBitmap(barcode);
         playBeepSoundAndVibrate();
-        txtResult.setText(obj.getBarcodeFormat().toString() + ":"
-                + obj.getText());
+        txtResult.setText(obj.getBarcodeFormat().toString() + ":" + obj.getText());
+        iv.setImageDrawable(new BitmapDrawable(barcode));
+
+        Intent intent=new Intent(this,StartActivity.class);
+        Bundle bundle = new Bundle();
+        bundle.putString("obj",obj.getText());
+        intent.putExtra("value",bundle);
+        startActivity(intent);
+
     }
 
 //    public void handleDecode(Result rawResult, Bitmap barcode, float scaleFactor) {
@@ -260,4 +267,8 @@ public class CaptureActivity extends FragmentActivity implements SurfaceHolder.C
         hasSurface = false;
     }
     //**********************************************
+
+
+
 }
+
