@@ -11,6 +11,8 @@ import com.evt.demo_utils.common.MyApplication;
 
 /**
  * Created by mrxus on 16/7/23.
+ *
+ * 屏幕工具类
  */
 public class DisplayUtil {
 
