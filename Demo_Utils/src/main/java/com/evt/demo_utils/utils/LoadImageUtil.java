@@ -5,8 +5,8 @@ import android.support.v4.app.Fragment;
 import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
+import com.evt.demo_utils.R;
 
-import cn.mrxus.mscan.R;
 
 
 /**
@@ -31,7 +31,7 @@ public class LoadImageUtil {
         Glide.with(t)
                 .load(imgUrl)
                 .crossFade(1000)
-                .error(R.drawable.img_error)
+                .error(R.mipmap.ic_launcher)//此处应该是错误加载的图片
                 .into(iv);
     }
 
@@ -48,7 +48,7 @@ public class LoadImageUtil {
         Glide.with(t)
                 .load(imgUrl)
                 .crossFade(1000)
-                .error(R.drawable.img_error)
+                .error(R.mipmap.ic_launcher)//此处应该是错误加载的图片
                 .into(iv);
 
     }
@@ -67,7 +67,7 @@ public class LoadImageUtil {
         Glide.with(t)
                 .load(imgId)
                 .crossFade(1000)
-                .error(R.drawable.img_error)
+                .error(R.mipmap.ic_launcher)//此处应该是错误加载的图片
                 .into(iv);
     }
 
@@ -84,7 +84,7 @@ public class LoadImageUtil {
         Glide.with(t)
                 .load(imgId)
                 .crossFade(1000)
-                .error(R.drawable.img_error)
+                .error(R.mipmap.ic_launcher)//此处应该是错误加载的图片
                 .into(iv);
     }
 
@@ -100,7 +100,7 @@ public class LoadImageUtil {
         Glide.with(t)
                 .load(imgId)
                 .asGif()
-                .error(R.drawable.img_error)
+                .error(R.mipmap.ic_launcher)//此处应该是错误加载的图片
                 .into(iv);
     }
 
@@ -116,7 +116,7 @@ public class LoadImageUtil {
         Glide.with(t)
                 .load(imgId)
                 .asGif()
-                .error(R.drawable.img_error)
+                .error(R.mipmap.ic_launcher)//此处应该是错误加载的图片
                 .into(iv);
     }
 
