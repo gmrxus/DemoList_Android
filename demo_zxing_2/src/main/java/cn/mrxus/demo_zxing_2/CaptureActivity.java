@@ -164,7 +164,9 @@ public class CaptureActivity extends FragmentActivity implements SurfaceHolder.C
         Intent intent=new Intent(this,StartActivity.class);
         Bundle bundle = new Bundle();
         bundle.putString("obj",obj.getText());
+        bundle.putParcelable("bitmap",barcode);
         intent.putExtra("value",bundle);
+
         startActivity(intent);
 
     }

@@ -3,6 +3,7 @@ package cn.mrxus.demo_zxing_2;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -28,7 +29,6 @@ public class StartActivity extends AppCompatActivity implements View.OnClickList
         findViewById(R.id.bt).setOnClickListener(this);
 
 
-
     }
 
     @Override
@@ -41,9 +41,13 @@ public class StartActivity extends AppCompatActivity implements View.OnClickList
         super.onResume();
         intent = getIntent();
         Bundle value = intent.getBundleExtra("value");
-        if (value!=null) {
-        String obj = value.getString("obj");
+        if (value != null) {
+            String obj = value.getString("obj");
+            Bitmap barcode = value.getParcelable("bitmap");
+            iv.setImageBitmap(barcode);
             tv.setText(obj);
+            barcode.recycle();
+
         }
     }
 }

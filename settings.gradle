@@ -1,1 +1,1 @@
-include ':app', ':View_EditTextDel', ':Demo_ButterKnife', ':Demo_Utils', ':zxing', ':demo_zxing', ':demo_zxing_2'
+include ':app', ':View_EditTextDel', ':Demo_ButterKnife', ':Demo_Utils', ':zxing', ':demo_zxing', ':demo_zxing_2', ':demo_zxing_library'
