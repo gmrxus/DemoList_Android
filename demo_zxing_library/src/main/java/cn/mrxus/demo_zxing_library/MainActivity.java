@@ -29,7 +29,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     public void onClick(View view) {
         startActivityForResult(new Intent(MainActivity.this, CaptureActivity.class), REQUEST_CODE);
-    }
+}
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
