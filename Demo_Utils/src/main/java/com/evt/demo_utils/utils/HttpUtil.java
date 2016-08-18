@@ -13,7 +13,7 @@ import okhttp3.Response;
 
 /**
  * 网络访问类,使用的okhttp框架
- *
+ * <p/>
  * Created by mrxus on 16/8/10.
  */
 public class HttpUtil {
@@ -45,27 +45,62 @@ public class HttpUtil {
         });
     }
 
-    public static class RequestBody {
-        private HashMap map;
-
-        public RequestBody() {
-            this.map = new HashMap();
-        }
-
-        public RequestBody add(String key, String value) {
-            map.put(key, value);
-            return this;
-        }
-
-        public HashMap returnMap() {
-            return map;
-        }
-
-    }
-
+    //    public static class RequestBody {
+//        private HashMap map;
+//
+//        public RequestBody() {
+//            this.map = new HashMap();
+//        }
+//
+//        public RequestBody add(String key, String value) {
+//            map.put(key, value);
+//            return this;
+//        }
+//
+//        public HashMap returnMap() {
+//            return map;
+//        }
+//
+//    }
+//
     public interface OnNetRequestListener {
         void onSuccess(String returnValue);
 
         void onFail();
+    }
+
+    public static class RequestBody {
+
+
+        private HashMap<String, String> map;
+
+        HashMap returnMap(){
+            return map;
+        }
+
+        public RequestBody(Builder builder) {
+            this.map = builder.map;
+        }
+
+        public static Builder create() {
+            return new Builder();
+        }
+
+        public static class Builder {
+            private Builder() {
+            }
+
+            private HashMap<String, String> map = new HashMap<>();
+
+            public Builder add(String key, String value) {
+                map.put(key, value);
+                return this;
+            }
+
+            public RequestBody build() {
+                return new RequestBody(this);
+            }
+        }
+
     }
 }

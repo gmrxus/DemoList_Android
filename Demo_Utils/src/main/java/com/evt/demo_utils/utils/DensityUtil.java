@@ -51,7 +51,7 @@ public class DensityUtil {
     /**
      * px转sp
      *
-     * @param fontScale
+     * @param context
      * @param pxVal
      * @return
      */
