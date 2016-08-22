@@ -20,8 +20,8 @@ public class NetworkUtil {
      *
      * @return
      */
-    public static boolean isHaveNetwork() {
-        ConnectivityManager cm = (ConnectivityManager) MyApplication.getContext().getSystemService(Context.CONNECTIVITY_SERVICE);
+    public static boolean isHaveNetwork(Context context) {
+        ConnectivityManager cm = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
         NetworkInfo info = cm.getActiveNetworkInfo();
         return (info != null && info.isConnected());
     }
@@ -31,11 +31,11 @@ public class NetworkUtil {
      *
      * @return
      */
-    public static boolean isWifiConnected() {
-        if (!isHaveNetwork()) {
+    public static boolean isWifiConnected(Context context) {
+        if (!isHaveNetwork(context)) {
             return false;
         }
-        ConnectivityManager cm = (ConnectivityManager) MyApplication.getContext().getSystemService(Context.CONNECTIVITY_SERVICE);
+        ConnectivityManager cm = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
         NetworkInfo networkInfo = cm.getNetworkInfo(ConnectivityManager.TYPE_WIFI);
         if (networkInfo != null) {
             return networkInfo.isAvailable();
@@ -47,11 +47,11 @@ public class NetworkUtil {
      * 判断是否用的流量连接
      * @return
      */
-    public static boolean isMobileConnected() {
-        if (!isHaveNetwork()) {
+    public static boolean isMobileConnected(Context context) {
+        if (!isHaveNetwork(context)) {
             return false;
         }
-        ConnectivityManager cm = (ConnectivityManager) MyApplication.getContext().getSystemService(Context.CONNECTIVITY_SERVICE);
+        ConnectivityManager cm = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
         NetworkInfo networkInfo = cm.getNetworkInfo(ConnectivityManager.TYPE_MOBILE);
         if (networkInfo != null) {
             return networkInfo.isAvailable();

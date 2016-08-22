@@ -1,4 +1,4 @@
-package com.evt.demo_utils.utils;
+package cn.mrxus.demo_vitamio;
 
 import android.content.Context;
 import android.os.Environment;
@@ -24,6 +24,15 @@ public class SDCardUtil {
         return Environment.getExternalStorageState().equals(
                 Environment.MEDIA_MOUNTED);
 
+    }
+
+    /**
+     * 获取机身内存ROM路径
+     *
+     * @return
+     */
+    public static String getROMPath() {
+        return Environment.getDataDirectory().getAbsolutePath() + File.separator;
     }
 
     /**
@@ -100,7 +109,8 @@ public class SDCardUtil {
 
     /**
      * 获取指定文件大小
-     * @throws Exception 　　
+     *
+     * @throws Exception
      */
     public static long getFileSize(File file) throws Exception {
         long size = 0;
@@ -113,12 +123,13 @@ public class SDCardUtil {
         }
         return size;
     }
+
     /**
      * 获取指定文件夹大小
+     *
      * @param f
      * @return
      * @throws Exception
-     *
      */
     public static long getFileSizes(File f) throws Exception {
         long size = 0;
@@ -132,11 +143,12 @@ public class SDCardUtil {
         }
         return size;
     }
+
     /**
      * 转换文件大小
+     *
      * @param fileS
      * @return
-     *
      */
     public static String FormetFileSize(long fileS) {
         DecimalFormat df = new DecimalFormat("#.00");
