@@ -31,7 +31,7 @@ public class LoadImageUtil {
         Glide.with(t)
                 .load(imgUrl)
                 .crossFade(1000)
-                .error(R.mipmap.ic_launcher)//此处应该是错误加载的图片
+//                .error(R.mipmap.ic_launcher)//此处应该是错误加载的图片
                 .into(iv);
     }
 
@@ -48,7 +48,7 @@ public class LoadImageUtil {
         Glide.with(t)
                 .load(imgUrl)
                 .crossFade(1000)
-                .error(R.mipmap.ic_launcher)//此处应该是错误加载的图片
+//                .error(R.mipmap.ic_launcher)//此处应该是错误加载的图片
                 .into(iv);
 
     }
@@ -67,7 +67,7 @@ public class LoadImageUtil {
         Glide.with(t)
                 .load(imgId)
                 .crossFade(1000)
-                .error(R.mipmap.ic_launcher)//此处应该是错误加载的图片
+//                .error(R.mipmap.ic_launcher)//此处应该是错误加载的图片
                 .into(iv);
     }
 
@@ -84,7 +84,7 @@ public class LoadImageUtil {
         Glide.with(t)
                 .load(imgId)
                 .crossFade(1000)
-                .error(R.mipmap.ic_launcher)//此处应该是错误加载的图片
+//                .error(R.mipmap.ic_launcher)//此处应该是错误加载的图片
                 .into(iv);
     }
 
@@ -100,7 +100,7 @@ public class LoadImageUtil {
         Glide.with(t)
                 .load(imgId)
                 .asGif()
-                .error(R.mipmap.ic_launcher)//此处应该是错误加载的图片
+//                .error(R.mipmap.ic_launcher)//此处应该是错误加载的图片
                 .into(iv);
     }
 
@@ -116,7 +116,7 @@ public class LoadImageUtil {
         Glide.with(t)
                 .load(imgId)
                 .asGif()
-                .error(R.mipmap.ic_launcher)//此处应该是错误加载的图片
+//                .error(R.mipmap.ic_launcher)//此处应该是错误加载的图片
                 .into(iv);
     }
 
